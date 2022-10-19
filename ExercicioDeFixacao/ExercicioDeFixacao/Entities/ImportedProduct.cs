@@ -17,15 +17,18 @@ namespace ExercicioDeFixacao.Entities
             CustomFee = customFee;
         }
 
-        public override string PriceTag()
+        public double TotalPrice()
         {
-            return $"{Name} $ {TotalPrice(CustomFee)} (Custom fee: $ {CustomFee.ToString("F2",CultureInfo.InvariantCulture)})" ;
+            return Price + CustomFee;
         }
 
-        public double TotalPrice(double customFee)
+        public override string PriceTag()
         {
-            return Price += customFee;
+            return $"{Name} $ {TotalPrice().ToString("F2",CultureInfo.InvariantCulture) }"
+                + $"(Custom fee: $ {CustomFee.ToString("F2",CultureInfo.InvariantCulture)})";
         }
+
+
 
 
     }

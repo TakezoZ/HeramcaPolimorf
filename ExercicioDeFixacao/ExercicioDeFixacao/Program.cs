@@ -18,22 +18,17 @@ namespace ExercicioDeFixacao
                 Console.WriteLine($"Product #{i} data:");
                 Console.Write("Common, used or imported (c/u/i)?: ");
                 char ch = char.Parse(Console.ReadLine());
+                Console.Write("Name: ");
+                string name = Console.ReadLine();
+                Console.Write("Price: ");
+                double price = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
                 if (ch == 'c')
                 {
-                    Console.Write("Name: ");
-                    string name = Console.ReadLine();
-                    Console.Write("Price: ");
-                    double price = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
-
                     list.Add(new Product(name, price));
                 }
                 else if (ch == 'i')
                 {
-                    Console.Write("Name: ");
-                    string name = Console.ReadLine();
-                    Console.Write("Price: ");
-                    double price = double.Parse(Console.ReadLine(),CultureInfo.InvariantCulture);
                     Console.Write("Custom fee: ");
                     double customFee = double.Parse(Console.ReadLine(),CultureInfo.InvariantCulture);
 
@@ -41,14 +36,10 @@ namespace ExercicioDeFixacao
                 }
                 else
                 {
-                    Console.Write("Name: ");
-                    string name = Console.ReadLine();
-                    Console.Write("Price: ");
-                    double price = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
                     Console.Write("Manufacture date (DD/MM/YYYY): ");
-                    DateTime manufactureDate = DateTime.Parse(Console.ReadLine());;
+                    DateTime date = DateTime.Parse(Console.ReadLine());
 
-                    list.Add(new UsedProduct(name, price, manufactureDate));
+                    list.Add(new UsedProduct(name, price, date));
                 }
             }
 
