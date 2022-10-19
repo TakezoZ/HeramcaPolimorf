@@ -18,7 +18,7 @@
             Balance += Balance * InterestRate;
         }
 
-        public override void Withdraw(double amount)
+        public sealed override void Withdraw(double amount)
         {
             // base.Withdraw(amount); Usado para chamar a implementação da superclasse
             Balance -= amount;
