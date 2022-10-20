@@ -16,35 +16,37 @@ namespace ExercicioDeFixacao_MetodoAbstrato
             {
                 Console.WriteLine($"Tax payer #{i} data:");
                 Console.Write("Individual or Company (i/c)?: ");
-                char ch = char.Parse(Console.ReadLine());
+                char type = char.Parse(Console.ReadLine());
                 Console.Write("Name: ");
                 string name = Console.ReadLine();
                 Console.Write("Anual Income: ");
-                double anualIncome = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
+                double income = double.Parse(Console.ReadLine(), CultureInfo.InvariantCulture);
 
-                if (ch == 'i')
+                if (type == 'i')
                 {
                     Console.Write("Health expenditures: ");
                     double healthExpenditures = double.Parse(Console.ReadLine(),CultureInfo.InvariantCulture);
 
-                    list.Add(new Individual(healthExpenditures, name, anualIncome));
+                    list.Add(new Individual(healthExpenditures, name, income));
                 }
                 else
                 {
                     Console.Write("Number of employees: ");
                     int numeberOfEmployees = int.Parse(Console.ReadLine());
 
-                    list.Add(new Company(numeberOfEmployees, name, anualIncome));
+                    list.Add(new Company(numeberOfEmployees, name, income));
                 }
             }
+
+            double sum = 0.0;
             Console.WriteLine();
             Console.WriteLine("TAXES PAID");
-            double sum = 0;
-            foreach (TaxPayer taxPayer in list)
+            foreach (TaxPayer tp in list)
             {
-                Console.WriteLine($"{taxPayer.Name}: $ {taxPayer.Tax().ToString("F2",CultureInfo.InvariantCulture)}");
-                sum += taxPayer.Tax();
+                Console.WriteLine($"{tp.Name}: $ {tp.Tax().ToString("F2",CultureInfo.InvariantCulture)}");
+                sum += tp.Tax();
             }
+
             Console.WriteLine();
             Console.Write($"TOTAL TAXES: $ {sum.ToString("F2",CultureInfo.InvariantCulture)}");
         }

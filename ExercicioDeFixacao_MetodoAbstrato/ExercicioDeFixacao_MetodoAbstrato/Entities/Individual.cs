@@ -16,20 +16,14 @@
 
         public override double Tax()
         {
-            double tax;
-
             if (AnualIncome <= 20000)
             {
-                tax = AnualIncome * 0.15;
+                return AnualIncome * 0.15 - HealthExpenditures * 0.50;
             }
             else
             {
-                tax = AnualIncome * 0.25;
+                return AnualIncome * 0.25 - HealthExpenditures * 0.50;
             }
-
-            tax -= HealthExpenditures * 0.50;
-
-            return tax;
         }
 
     }
